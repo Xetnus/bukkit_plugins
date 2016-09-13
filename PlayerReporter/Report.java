@@ -3,14 +3,12 @@ package me.Xetnus.PlayerReporter;
 import org.bukkit.entity.Player;
 import java.util.Date;
 
-public class Report
-{
+public class Report {
 	private Player reportedBy;
 	private String accusedWhom, reason;
 	private Date dateOfReport;
 	
-	public Report(Player reportedBy, String accusedWhom, String reason)
-	{
+	public Report(Player reportedBy, String accusedWhom, String reason) {
 		this.reportedBy = reportedBy;
 		this.accusedWhom = accusedWhom;
 		this.reason = reason;
@@ -18,29 +16,24 @@ public class Report
 		this.dateOfReport = date;
 	}
 	
-	public void displayDateAndTime()
-	{
+	public void displayDateAndTime() {
 		reportedBy.sendMessage("Date: " + dateOfReport);
 	}
 	
-	public Date getDate()
-	{
+	public Date getDate() {
 		return dateOfReport;
 	}
 	
-	public String getReportedBy()
-	{
+	public String getReportedBy() {
 		return reportedBy.getName();
 	}
 	
-	public String getAccusedWhom()
-	{
+	public String getAccusedWhom() {
 		return accusedWhom;
 	}
 	
 	@SuppressWarnings("deprecation")
-	public boolean checkCooldownBetweenSameReport(Report previousReport)
-	{
+	public boolean checkCooldownBetweenSameReport(Report previousReport) {
 		Date previousDate = previousReport.getDate();
 		
 		if (previousDate.getYear() < dateOfReport.getYear())
@@ -49,8 +42,7 @@ public class Report
 			return true;
 		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() < dateOfReport.getDay())
 			return true;
-		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() == dateOfReport.getDay())
-		{
+		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() == dateOfReport.getDay()) {
 			if (dateOfReport.getHours() - previousDate.getHours() >= 1)
 				return true;
 		}
@@ -59,8 +51,7 @@ public class Report
 	}
 	
 	@SuppressWarnings("deprecation")
-	public boolean checkCooldownBetweenAllReports(Report previousReport)
-	{
+	public boolean checkCooldownBetweenAllReports(Report previousReport) {
 		Date previousDate = previousReport.getDate();
 		
 		if (previousDate.getYear() < dateOfReport.getYear())
@@ -71,9 +62,27 @@ public class Report
 			return true;
 		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() == dateOfReport.getDay() && previousDate.getHours() < dateOfReport.getHours())
 			return true;
-		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() == dateOfReport.getDay() && previousDate.getHours() == dateOfReport.getHours())
-		{
+		else if (previousDate.getYear() == dateOfReport.getYear() && previousDate.getMonth() == dateOfReport.getMonth() && previousDate.getDay() == dateOfReport.getDay() && previousDate.getHours() == dateOfReport.getHours()) {
 			if (dateOfReport.getMinutes() - previousDate.getMinutes() >= 2)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public boolean isTimeVoid() {
+		Date repDate = this.getDate();
+		Date curDate = new Date();
+		
+		if (repDate.getYear() < curDate.getYear())
+			return true;
+		else if (repDate.getYear() == curDate.getYear() && repDate.getMonth() < curDate.getMonth())
+			return true;
+		else if (repDate.getYear() == curDate.getYear() && repDate.getMonth() == curDate.getMonth() && repDate.getDay() < curDate.getDay())
+			return true;
+		else if (repDate.getYear() == curDate.getYear() && repDate.getMonth() == curDate.getMonth() && repDate.getDay() == curDate.getDay()) {
+			if (curDate.getHours() - repDate.getHours() >= 1)
 				return true;
 		}
 		
