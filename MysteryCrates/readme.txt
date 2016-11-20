@@ -1,0 +1,1 @@
+MysteryCrates is an entertainment plugin responsible for managing 'crates,' or collections of various items, that players may access. Staff members may give certain players crates. Players may then open any crates they have, randomly receiving any amount of good (or sometimes bad) in-game items. 

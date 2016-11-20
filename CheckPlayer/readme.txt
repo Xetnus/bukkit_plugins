@@ -1,0 +1,1 @@
+CheckPlayer is a server moderation plugin used by staff members to 'go undercover' in order to watch a player accused of breaking a server rule. This plugin allows the staff member to go invisible, teleport to the accused player, and silently observe the player's actions without alerting that player.
