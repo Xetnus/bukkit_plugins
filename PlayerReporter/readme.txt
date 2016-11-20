@@ -1,0 +1,1 @@
+PlayerReporter is a server moderation plugin used by both regular players and staff members to organize the reporting of rule-breaking players on a server. Players could report other players suspected of cheating or otherwise rule-breaking. This report would then be visible by all staff members so that the accused player could be investigated further.
