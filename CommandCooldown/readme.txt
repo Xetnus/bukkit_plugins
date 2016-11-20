@@ -1,0 +1,1 @@
+CommandCooldown is a plugin that enables server administrators to prohibit the overuse of certain server commands by placing a 'cooldown' on certain commands for certain players. This cooldown limits the amount of times a player may use a designated command within a given time frame.
